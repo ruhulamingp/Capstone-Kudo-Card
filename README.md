@@ -25,13 +25,13 @@ The idea is to build a simple **Kudo-Card** application using microservice conce
 
 * Docker Images & Push to docker hub:
 
-<img width="964" alt="Docker images & Docker Hub Push Success" src="https://github.com/ruhulamingp/ruhulamingp-Capstone-Kudo-Card/blob/master/Docker%20images%20%26%20Docker%20Hub%20Push%20Success.png">
+<img width="964" alt="Docker images & Docker Hub Push Success" src="https://github.com/ruhulamingp/Capstone-Kudo-Card/blob/master/Docker%20images%20%26%20Docker%20Hub%20Push%20Success.png">
 
 * Dockerhub Repo:
 
   https://hub.docker.com/repository/docker/ruhulamingp/agwboard_backend
 
-<img width="964" alt="Docker Hub Repo" src="https://github.com/ruhulamingp/ruhulamingp-Capstone-Kudo-Card/blob/master/Docker%20Hub%20Repo.png">
+<img width="964" alt="Docker Hub Repo" src="https://github.com/ruhulamingp/Capstone-Kudo-Card/blob/master/Docker%20Hub%20Repo.png">
 
 
 # Build Application:
@@ -52,7 +52,11 @@ The idea is to build a simple **Kudo-Card** application using microservice conce
 
 * Image of running application on browser:
 
-<img width="964" alt="Kudo Card Running on Local Host" src="https://github.com/ruhulamingp/ruhulamingp-Capstone-Kudo-Card/blob/master/Kudo%20Card%20Running%20on%20Local%20Host.png">
+<img width="964" alt="Kudo Card Running on Local Host" src="https://github.com/ruhulamingp/Capstone-Kudo-Card/blob/master/Kudo%20Card%20Running%20on%20Local%20Host.png">
+
+<img width="964" alt="Kudo Board" src="https://github.com/ruhulamingp/Capstone-Kudo-Card/blob/master/Kudo%20Board.png">
+
+
 
 
 
