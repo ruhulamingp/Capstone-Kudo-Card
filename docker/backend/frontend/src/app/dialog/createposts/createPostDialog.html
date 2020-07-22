@@ -1,0 +1,95 @@
+
+<h1 mat-dialog-title>{{this.previousPostItem ? 'Update' : 'Post A Kudo'}} </h1>
+<form [formGroup]="myForm">
+<div >
+ 
+    <div class="container-fluid mb-3 p-0" > 
+
+
+
+        <div class="row ">
+
+          
+ 
+            <div  class="form-group col-sm-12 col-md-6">
+    
+                <input type="text"  formControlName="toName" class="form-control"  placeholder="Name"
+                [class.pHasError]="myForm.get('toName').invalid && myForm.get('toName').touched"
+                [class.pHasSuccess]="myForm.get('toName').valid">
+    
+            </div>
+
+            <div  class="form-group col-sm-12 col-md-6"  >
+                <input  type="text" class="form-control"   formControlName="toEmail" placeholder="Email"
+                [class.pHasError]="myForm.get('toEmail').invalid && myForm.get('toEmail').touched"
+                [class.pHasSuccess]="myForm.get('toEmail').valid">
+                
+            </div>
+
+
+            
+            <div class="form-group col-sm-12 col-md-6">
+
+                <mat-select formControlName="kudoType" class="form-control" placeholder="Kudo Type"
+                [class.pHasError]="myForm.get('kudoType').invalid && myForm.get('kudoType').touched"
+                [class.pHasSuccess]="myForm.get('kudoType').valid">
+              
+                    <mat-option *ngFor="let item of kudoType" [value]="item">
+                      {{item.title}}
+                    </mat-option>
+                   
+                </mat-select>
+                
+            </div> 
+    
+            <div class="form-group col-sm-12 col-md-6">
+    
+                <input type="text"  name="title" class="form-control" [value]='myForm.value.kudoType ? myForm.value.kudoType.title : "" ' disabled placeholder="title">  
+               
+
+            </div>
+    
+
+    
+            <div class="form-group col-12">
+    
+                <textarea type="textarea" formControlName="content" class="form-control" 
+                [class.pHasError]="myForm.get('content').invalid && myForm.get('content').touched"
+                [class.pHasSuccess]="myForm.get('content').valid"
+                placeholder="Content"></textarea>
+                
+    
+           </div>
+
+       
+    
+    
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<mat-spinner diameter="30" class="mt-4" *ngIf="isLoading"></mat-spinner>
+
+
+
+<div  mat-dialog-actions >
+  <button mat-button type="button" 
+  [ngClass]="{
+    'btn-primary' : myForm.valid,
+    'text-white':  myForm.valid
+    }"  
+  [disabled]="!myForm.valid" (click)="onSubmit()">Submit</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+</div>
+
+</form>
+
+
+
+
+
+

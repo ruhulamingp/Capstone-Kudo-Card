@@ -1,0 +1,70 @@
+<div class="container d-flex justify-content-center" style="height: 90vh">
+
+    <div class="row justify-content-center align-self-center w-100 ">
+  
+     
+      <h1 class="w-100 p-0 m-0 text-center text-primary">Kudo Card</h1>
+       
+          <div *ngIf='!loginResponse' class="registration-container mt-3 w-100 p-5 card shadow" >
+  
+            
+            
+              <form [ngClass]="{
+                                  'was-validated' : startValidation
+                              }"  
+              novalidate #loginForm="ngForm" (submit)="onSubmit(loginForm)">
+                
+              
+              <div class="form-group has-danger">
+                
+                <label for="name">Full Name</label>
+                <input type="name" class="form-control" name="name"  id="name" aria-describedby="nameHelp" placeholder="Enter Your Full Name" ngModel required>
+                <div class="invalid-feedback">  Name is required. </div>
+
+              
+              </div>
+              
+              
+              <div class="form-group has-danger">
+                    <label for="email">Email address</label>
+                    <input type="email" name="username" [ngClass]="{
+                      'form-control': true,
+                      'is-invalid': !validEmail
+                  }"    id="email" aria-describedby="emailHelp" placeholder="Enter email" ngModel required (ngModelChange)="onEmailChange($event)">
+                    <div class="invalid-feedback"> Invalid Email </div>
+  
+                  
+                  </div>
+                
+               
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="Password" ngModel>
+                    <div class="invalid-feedback"> Invalid Password </div>
+                  </div>
+  
+        
+  
+                  <div *ngIf='errorResponse.error' class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{errorResponse.message}}
+                    <button type="button" class="close" (click)="closeAlert()" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+  
+                <mat-spinner-button type="submit"  class="btn btn-primary w-100 text-white"  [options]="btnOpts">Submit</mat-spinner-button>
+              
+            </form> 
+  
+            
+            <span class="w-100 text-right mt-4"> <a class="text-primary" routerLink ="/login"  >Login</a> </span>
+       
+            </div>
+  
+  
+    </div>
+  
+  </div>
+  
+  
+  

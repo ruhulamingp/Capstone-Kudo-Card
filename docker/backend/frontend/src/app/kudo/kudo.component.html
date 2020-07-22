@@ -1,0 +1,173 @@
+
+ <div class="container-fluid p-0 m-0">
+   
+    <mat-toolbar class="fixed-top"  >
+        <mat-toolbar-row >
+            <span class="text-primary  m-sm-4">Kudo Board</span>
+            <span class="example-spacer"></span>
+    
+           
+           
+            <mat-icon  #tooltip="matTooltip"
+            matTooltip="Create A New Post" (click)="showCreateDialog()"  class="d-sm-none ml-2 topIconMenu" aria-hidden="false" aria-label="Example add icon">add</mat-icon>
+    
+            <mat-icon  #tooltip="matTooltip"
+            matTooltip="Log Out" (click)="logout()" class=" d-sm-none ml-2 topIconMenu" aria-hidden="false" aria-label="Example log out icon">login</mat-icon>
+    
+           
+    
+            <button mat-raised-button (click)="showCreateDialog()" color="primary" class="ml-2 d-none d-sm-block mr-2">
+              <mat-icon>add</mat-icon>
+              POST A KUDO
+            </button>
+    
+            <button  mat-raised-button (click)="logout()" color="primary" class="ml-2 d-none d-sm-block mr-4">
+              <mat-icon>login</mat-icon>
+             Log Out
+            </button>
+        </mat-toolbar-row>
+    
+      </mat-toolbar>
+</div>
+
+
+<div class="container-fluid">
+
+  <div class="filterRow  scrolling-wrapper-flexbox justify-content-sm-end pr-sm-4 pl-sm-4">
+
+ 
+   <button mat-stroked-button [ngClass]="{'searchButtonSelected': filterSend}" (click)="filterSendChanged()" color="warn" class="mr-2 text-dark searchButton">Sent By Me</button>
+   <button mat-stroked-button [ngClass]="{'searchButtonSelected': filterReceive}" (click)="filterReceiveChanged()" color="warn" class="mr-2 text-dark searchButton">Received By Me</button>
+   <input  placeholder="Search" class="form-control mr-2" style="width: 200px;height : 40px;"  [ngModel]='model' (ngModelChange)='searchChanged($event)'  >
+ 
+  </div>
+
+
+   <div  class="row  ml-3 mr-3 mb-5" infiniteScroll
+   [infiniteScrollDistance]="2"
+   [infiniteScrollThrottle]="50"
+   (scrolled)="onScroll()">
+
+    
+    
+   
+       <ng-container   *ngIf="(getPostList() | async) as postListItems;else loading">
+
+         <div class="col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let element of (getPostList() | async) as postListItems;else loading">
+           <mat-card>
+               <mat-card-header class="align-items-center kudoMatCardHeader border-bottom-5" [style.background-color]="element.kudoType.color">
+
+                 <img mat-card-avatar    [src]="element.toImage ? element.toImage : 'assets/images/user.svg'" class="kudoAvatar ">
+                 <mat-card-title class="mt-2 text-uppercase text-white">{{element.kudoType.title}}</mat-card-title>
+
+                
+                
+               </mat-card-header>
+              
+               <mat-card-content >
+
+                 <div class="d-flex">
+                 <div class="d-flex">
+
+                   <img class="mt-2" style="width: 100px;height:80px ;"  [src]="element.kudoType.icon">
+                 </div>
+
+                 <div class="d-flex  kudoToHeader align-items-center justify-content-start" >
+                     <h4 class="mt-3 ml-4 ">{{ element.toName }}</h4>
+
+                 </div>
+               </div>
+
+               <div class="d-flex lead paperLine " style="min-height: 140px;">
+
+                 <p class="highlight" style="font-size: 1em;">
+                   {{element.content}}
+                 </p>
+               </div>
+
+               <div class="float-bottom d-flex flex-row justify-content-end align-items-center">
+
+                <button class="btn btn-trasparent p-0 m-0"  *ngIf="element.fromEmail == currentEmail"  (click)="deleteItem(element)">
+                <mat-icon class="mt-1" aria-label="Example add icon">delete</mat-icon>
+                </button>
+
+                <button class="btn btn-trasparent p-0 m-0"  *ngIf="element.fromEmail == currentEmail"  (click)="editItem(element)">
+                  <mat-icon class="mt-1" aria-label="Example add icon">create</mat-icon>
+                </button>
+
+                <span class="example-spacer"></span>
+
+                 <img   [src]="element.fromImage ? element.fromImage : 'assets/images/user.png'" class="mat-card-avatar-vsmall rounded-circle mr-2 mt-1">
+                 <div>
+                   
+                   <span  class="m-0 small p-0">{{element.fromName}}</span>
+                   <span  class="footerEmail m-0 p-0 small">{{element.fromEmail}}</span>
+                   
+                 </div>
+               </div>
+               
+               </mat-card-content>
+              
+             </mat-card>
+            
+
+          </div>
+
+          <div *ngIf="(getPostList() | async)?.length == 0" class="container d-flex justify-content-center mt-5">
+
+           <div class="row justify-content-center w-100 mt-5">
+         
+            
+           
+              
+                 <div  class="col-sm-10 col-md-6 mt-3 w-100 p-5 card shadow" >
+         
+                   <h1 class="w-100 p-0 m-0 text-center text-primary"> {{postListItems.lentgh}} Kudo Board Is Empty</h1>
+                   
+                 </div>
+         
+         
+           </div>
+         
+         </div>
+
+       
+
+       </ng-container>
+
+
+
+      
+
+    
+
+     <ng-template #loading>
+
+       <mat-progress-bar mode="indeterminate" class="mt-5 primary-progress" color="info"></mat-progress-bar>
+
+     </ng-template>
+
+   </div>
+
+   
+
+   <div class="row pb-5">
+     <div class="col-md-12 p-5">
+      <ngx-spinner
+      bdOpacity = 0.9
+      bdColor = ""
+      size = "default"
+      color = "#e69525"
+      type = "ball-pulse-sync"
+      [fullScreen] = "false"
+      >
+      </ngx-spinner>
+     </div>
+   </div>
+ 
+
+   
+
+</div>
+
+

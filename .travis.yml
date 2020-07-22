@@ -1,0 +1,18 @@
+language: minimal
+
+sudo: required
+
+services: 
+  - docker
+
+env:
+  DOCKER_COMPOSE_VERSION=1.26.2
+
+before_install:
+  - sudo docker -v && docker-compose -v
+  - sudo rm /usr/local/bin/docker-compose
+  - sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
+
+install:
+  - sudo docker-compose -f docker/docker-compose.yml build
