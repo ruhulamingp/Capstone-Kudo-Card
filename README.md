@@ -38,17 +38,17 @@ The idea is to build a simple **Kudo-Card** application using microservice conce
 
 * Following command need to be executed on local machine (docker folder) to build the application:
 
-  sudo docker-compose -f docker-compose.yml build
+  **sudo docker-compose -f docker-compose.yml build**
 
 ## Test Application:
 
 * Following command need to be executed on local machine (docker folder) to run the application:
 
-  sudo docker-compose -f docker-compose.yml up
+  **sudo docker-compose -f docker-compose.yml up**
 
-* Paste below URL to your browser
+* Paste below URL to your browser:
 
-  http://localhost:3000
+  **http://localhost:3000**
 
 * Image of running application on browser:
 
