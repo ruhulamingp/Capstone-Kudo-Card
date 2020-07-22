@@ -1,5 +1,6 @@
 # Travis Build Status:
 
+[![Build Status](https://travis-ci.org/ruhulamingp/Capstone-Kudo-Card.svg?branch=master)](https://travis-ci.org/ruhulamingp/Capstone-Kudo-Card)
 
 # Project Proposal & Approaches:
 
